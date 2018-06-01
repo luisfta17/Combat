@@ -96,7 +96,7 @@ public class ClericTest {
     @Test
     public void canBasicAttack(){
         cleric.basicAttack(ninja2);
-        assertTrue(ninja2.getHp() >= 130);
+        assertTrue(ninja2.getHp() >= 110);
         assertTrue(ninja2.getHp() <= 175);
         assertEquals(100, cleric.getMp(), 0.01);
     }

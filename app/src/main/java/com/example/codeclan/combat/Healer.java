@@ -25,7 +25,7 @@ public abstract class Healer extends Character {
     }
 
     public void basicAttack(Character character){
-        double extra = getRandomNumber(10);
+        double extra = getRandomNumber(20);
         double total = extra + this.getAttPower();
         character.reciveDamage(total);
         this.mp += total / 2;
