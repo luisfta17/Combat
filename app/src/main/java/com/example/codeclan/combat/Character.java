@@ -80,10 +80,5 @@ public abstract class Character {
 
     }
 
-    public void basicAttack(Character character){
-        double extra = getRandomNumber(10);
-        character.reciveDamage(this.attPower + extra);
-    }
-
-
+    public abstract void basicAttack(Character character);
 }
