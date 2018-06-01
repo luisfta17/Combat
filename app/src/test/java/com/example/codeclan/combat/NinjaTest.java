@@ -96,12 +96,21 @@ public class NinjaTest {
     @Test
     public void canBasicAttack(){
         ninja.basicAttack(ninja2);
-       assertTrue(ninja2.getHp() > 130);
-       assertTrue(ninja2.getHp() < 175);
+       assertTrue(ninja2.getHp() >= 130);
+       assertTrue(ninja2.getHp() <= 175);
        assertTrue(ninja.getAdrenaline() > 25);
        assertTrue(ninja.getAdrenaline() < 70);
+    }
 
-
+    @Test
+    public void canSpecialAttack(){
+        ninja.specialAttack(ninja2);
+        assertEquals(200, ninja2.getHp(), 0.01);
+        ninja.setAdrenaline(50);
+        ninja.specialAttack(ninja2);
+        assertTrue(ninja2.getHp() >= 100);
+        assertTrue(ninja2.getHp() <= 150);
+        assertEquals(0, ninja.getAdrenaline(), 0.01);
     }
 
 

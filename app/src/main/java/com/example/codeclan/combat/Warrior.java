@@ -38,14 +38,14 @@ public abstract class Warrior extends Character {
     }
 
     public void specialAttack(Character character){
-        if (this.adrenaline > 50){
+        if (this.adrenaline >= 50){
             character.reciveDamage(this.getAttPower() * 2);
             this.adrenaline -= 50;
         }
     }
 
     public void actionBack(Character character){
-        if (this.adrenaline > 50){
+        if (this.adrenaline >= 50){
             this.specialAttack(character);
         } else {
             this.basicAttack(character);
