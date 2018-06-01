@@ -113,7 +113,19 @@ public class NinjaTest {
         assertEquals(0, ninja.getAdrenaline(), 0.01);
     }
 
-
+    @Test
+    public void hasAttackLogic(){
+        ninja2.actionBack(ninja);
+        assertTrue(ninja.getHp() >= 130);
+        assertTrue(ninja.getHp() <= 175);
+        assertTrue(ninja2.getAdrenaline() > 25);
+        assertTrue(ninja2.getAdrenaline() < 70);
+        ninja.setAdrenaline(50);
+        ninja.actionBack(ninja2);
+        assertTrue(ninja2.getHp() >= 100);
+        assertTrue(ninja2.getHp() <= 150);
+        assertEquals(0, ninja.getAdrenaline(), 0.01);
+    }
 
 
 }
