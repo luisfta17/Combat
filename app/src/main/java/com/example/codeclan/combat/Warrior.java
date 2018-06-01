@@ -26,7 +26,7 @@ public abstract class Warrior extends Character {
         this.adrenaline = adrenaline;
     }
 
-    
+
     public void basicAttack(Character character){
         double extra = getRandomNumber(10);
         double total = extra + this.getAttPower();
@@ -34,6 +34,12 @@ public abstract class Warrior extends Character {
         this.adrenaline += total;
         if (this.adrenaline > getMaxAdrenaline()){
             this.adrenaline = maxAdrenaline;
+        }
+    }
+
+    public void smash(Character character){
+        if (this.adrenaline > 50){
+            character.reciveDamage(this.getAttPower() * 2);
         }
     }
 
