@@ -43,6 +43,42 @@ public class NinjaTest {
         assertEquals(100, this.ninja.getMaxAdrenaline(), 0.01);
     }
 
+    @Test
+    public void canChangeName(){
+        this.ninja.setName("Player 2");
+        assertEquals("Player 2", this.ninja.getName());
+    }
+
+    @Test
+    public void canChangeMaxHp(){
+        this.ninja.setMaxHp(20);
+        assertEquals(20, this.ninja.getMaxHp(), 0.01);
+    }
+
+    @Test
+    public void canChangeHp(){
+        this.ninja.setHp(20);
+        assertEquals(20, this.ninja.getHp(), 0.01);
+    }
+
+    @Test
+    public void canChangeAttPower(){
+        this.ninja.setAttPower(20);
+        assertEquals(20, this.ninja.getAttPower(), 0.01);
+    }
+
+    @Test
+    public void canChangeMaxAdrenaline(){
+        this.ninja.setMaxAdrenaline(20);
+        assertEquals(20, this.ninja.getMaxAdrenaline(), 0.01);
+    }
+
+    @Test
+    public void canChangeAdrenaline(){
+        this.ninja.setAdrenaline(20);
+        assertEquals(20, this.ninja.getAdrenaline(), 0.01);
+    }
+
 
 
 }
