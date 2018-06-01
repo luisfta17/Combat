@@ -37,9 +37,9 @@ public abstract class Healer extends Character {
     // HEALER SPECIAL ATTACK HEALS HIMSELF
     public void specialAttack(Character character){
         if (this.mp >= 50){
-            character.setHp(this.getAttPower() * 2.5);
+            character.setHp(( character.getHp() + this.getAttPower() * 2.5));
             if (character.getHp() > character.getMaxHp()){
-                character.setHp(this.getMaxHp());
+                character.setHp(character.getMaxHp());
             }
             System.out.println(String.format("%s has healed itself  %.2f points of HP -  %s has %.2f hp!",this.getName(), (this.getAttPower() * 2), this.getName(), this.getHp()));
             this.mp -= 50;
