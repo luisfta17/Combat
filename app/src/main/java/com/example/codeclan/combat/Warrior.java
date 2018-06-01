@@ -1,6 +1,6 @@
 package com.example.codeclan.combat;
 
-public class Warrior extends Character {
+public abstract class Warrior extends Character {
 
     private double maxAdrenaline, adrenaline;
 
@@ -8,14 +8,6 @@ public class Warrior extends Character {
         super(name, maxHp, hp, attPower);
         this.maxAdrenaline = maxAdrenaline;
         this.adrenaline = adrenaline;
-    }
-
-
-
-    public void basicAttack(Character character){
-        double extra = getRandomNumber(10);
-        character.reciveDamage(this.getAttPower() + extra);
-        this.adrenaline += this.getAttPower() + extra;
     }
 
     public double getMaxAdrenaline() {
@@ -29,8 +21,22 @@ public class Warrior extends Character {
     public double getAdrenaline() {
         return this.adrenaline;
     }
-    
+
     public void setAdrenaline(double adrenaline) {
         this.adrenaline = adrenaline;
     }
+
+    
+    public void basicAttack(Character character){
+        double extra = getRandomNumber(10);
+        double total = extra + this.getAttPower();
+        character.reciveDamage(total);
+        this.adrenaline += total;
+        if (this.adrenaline > getMaxAdrenaline()){
+            this.adrenaline = maxAdrenaline;
+        }
+    }
+
+
+
 }
