@@ -26,7 +26,7 @@ public class ArenaTest {
     }
 
     @Test
-    public void canFightTillDead(){
+    public void canFightTillDead() throws InterruptedException{
         arena.fightTillDead();
         assertTrue((!arena.getFighters().get(0).isAlive() && arena.getFighters().get(1).isAlive())
                 || (arena.getFighters().get(0).isAlive() && !arena.getFighters().get(1).isAlive()));

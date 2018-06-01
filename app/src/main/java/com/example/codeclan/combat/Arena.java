@@ -25,11 +25,9 @@ public class Arena {
         while (fighters.get(0).isAlive() && fighters.get(1).isAlive()){
             Thread.sleep(TIME_DELAY);
             fighters.get(0).actionBack(fighters.get(1));
-            System.out.println(String.format("%s has hit %s !! ", fighters.get(0).getName(), fighters.get(1).getName()));
             if (fighters.get(1).isAlive()){
                 Thread.sleep(TIME_DELAY);
                 fighters.get(1).actionBack(fighters.get(0));
-                System.out.println(String.format("%s Has hit back %s!! ", fighters.get(1).getName(), fighters.get(0).getName()));
             } else {
                 return fighters.get(0).getName() + " Has won";
             }
