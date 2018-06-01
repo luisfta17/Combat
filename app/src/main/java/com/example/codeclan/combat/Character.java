@@ -81,4 +81,7 @@ public abstract class Character {
     }
 
     public abstract void basicAttack(Character character);
+    public abstract void actionBack(Character character);
+    public abstract void specialAttack(Character character);
+
 }
