@@ -12,8 +12,8 @@ public class NinjaTest {
 
     @Before
     public void before(){
-        ninja = new Ninja();
-        ninja2 = new Ninja();
+        ninja = new Ninja("Player 1");
+        ninja2 = new Ninja("Android");
     }
 
     @Test
