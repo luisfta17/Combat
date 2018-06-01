@@ -14,6 +14,10 @@ public class Arena {
         return this.fighters;
     }
 
+    public void addPlayer(Character character){
+        this.fighters.add(character);
+    }
+
     public String fightTillDead(){
         Collections.shuffle(fighters);
         while (fighters.get(0).isAlive() && fighters.get(1).isAlive()){
@@ -21,10 +25,10 @@ public class Arena {
             if (fighters.get(1).isAlive()){
                 fighters.get(1).actionBack(fighters.get(0));
             } else {
-                return fighters.get(0).getName() + "Has won";
+                return fighters.get(0).getName() + " Has won";
             }
         }
-        return fighters.get(1).getName() + "Has won";
+        return fighters.get(1).getName() + " Has won";
 
     }
 }
