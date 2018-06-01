@@ -1,5 +1,7 @@
 package com.example.codeclan.combat.character;
 
+import java.util.Random;
+
 public abstract class Character {
     private String name;
     private double maxHp, hp, attPower;
@@ -47,12 +49,35 @@ public abstract class Character {
         return this.getHp() > 0;
     }
 
-    public void reciveDamage(double damage){
-        double total = damage;
-        this.hp -= total;
-        if (!this.isAlive()){
-            this.hp = 0;
+    public int getRandomNumber(int maxNumber){
+        Random random = new Random();
+        int  number = random.nextInt(maxNumber) + 1;
+        return number;
+    }
+
+    public boolean criticalHit(){
+        if (getRandomNumber(10) > 7){
+            return true;
+        } else {
+            return false;
         }
+    }
+
+    public void reciveDamage(double damage) {
+        if (criticalHit()) {
+            double total = damage * 2.0;
+            this.hp -= total;
+            if (!this.isAlive()) {
+                this.hp = 0;
+            }
+        } else {
+            double total = damage;
+            this.hp -= total;
+            if (!this.isAlive()) {
+                this.hp = 0;
+            }
+        }
+
     }
 
 
