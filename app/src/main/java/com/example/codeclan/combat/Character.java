@@ -1,4 +1,4 @@
-package com.example.codeclan.combat.character;
+package com.example.codeclan.combat;
 
 import java.util.Random;
 
