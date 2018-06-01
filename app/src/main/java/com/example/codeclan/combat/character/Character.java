@@ -43,8 +43,17 @@ public abstract class Character {
         this.attPower = attPower;
     }
 
+    public boolean isAlive(){
+        return this.getHp() > 0;
+    }
 
-
+    public void reciveDamage(double damage){
+        double total = damage;
+        this.hp -= total;
+        if (!this.isAlive()){
+            this.hp = 0;
+        }
+    }
 
 
 }
