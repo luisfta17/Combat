@@ -4,13 +4,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class NinjaTest {
     Ninja ninja;
+    Ninja ninja2;
 
     @Before
     public void before(){
         ninja = new Ninja();
+        ninja2 = new Ninja();
     }
 
     @Test
@@ -78,6 +81,29 @@ public class NinjaTest {
         this.ninja.setAdrenaline(20);
         assertEquals(20, this.ninja.getAdrenaline(), 0.01);
     }
+
+    @Test
+    public void canCheckIfIsAlive(){
+        assertEquals(true, this.ninja.isAlive());
+    }
+
+    @Test
+    public void canCheckIfIsAlive_DeadCase(){
+        ninja.setHp(0);
+        assertEquals(false, this.ninja.isAlive());
+    }
+
+    @Test
+    public void canBasicAttack(){
+        ninja.basicAttack(ninja2);
+       assertTrue(ninja2.getHp() > 130);
+       assertTrue(ninja2.getHp() < 175);
+       assertTrue(ninja.getAdrenaline() > 25);
+       assertTrue(ninja.getAdrenaline() < 70);
+
+
+    }
+
 
 
 

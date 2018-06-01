@@ -56,7 +56,7 @@ public abstract class Character {
     }
 
     public boolean criticalHit(){
-        if (getRandomNumber(10) > 7){
+        if (getRandomNumber(10) > 8){
             return true;
         } else {
             return false;
