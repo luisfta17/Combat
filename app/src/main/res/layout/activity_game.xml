@@ -43,6 +43,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +65,7 @@
             android:layout_height="wrap_content"
             android:text="@string/player_hp"
             android:textColor="@android:color/background_dark"
+            android:background="@android:color/transparent"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -83,6 +85,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,5 +150,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.242"
         app:layout_constraintStart_toEndOf="@+id/basic_att_bttn" />
+
+    <RelativeLayout
+        android:layout_width="119dp"
+        android:layout_height="255dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ProgressBar
+            android:id="@+id/player_adrenaline_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="91dp"
+            android:progressTint="@android:color/holo_orange_light" />
+
+        <ProgressBar
+            android:id="@+id/player_health_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="40dp"
+            android:indeterminate="false"
+            android:progressBackgroundTint="@android:color/holo_orange_dark"
+            android:progressTint="@android:color/holo_red_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:progressBackgroundTint="@android:color/holo_orange_dark"
+            tools:visibility="visible" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,8 @@ public class GameActivity extends AppCompatActivity{
     TextView android_adrenaline;
     Button basic_att_bttn;
     Button special_att_bttn;
+    ProgressBar player_health_bar;
+    ProgressBar player_adrenaline_bar;
     Handler handler = new Handler();
     Ninja ninja = new Ninja("Player 1");
     Knight knight = new Knight("Android");
@@ -38,8 +41,15 @@ public class GameActivity extends AppCompatActivity{
         android_hp = findViewById(R.id.android_hp);
         basic_att_bttn = findViewById(R.id.basic_att_bttn);
         special_att_bttn = findViewById(R.id.special_att_bttn);
+        player_health_bar = findViewById(R.id.player_health_bar);
+        player_adrenaline_bar = findViewById(R.id.player_adrenaline_bar);
+        player_health_bar.setMax((int) ninja.getMaxHp());
+        player_adrenaline_bar.setMax((int) ninja.getMaxAdrenaline());
+        player_health_bar.setScaleY(4f);
+        player_adrenaline_bar.setScaleY(4f);
         // Refresh method to update hud status
         refresh();
+
     }
 
     public void onBasicAttBttnClicked(View view){
@@ -71,10 +81,12 @@ public class GameActivity extends AppCompatActivity{
 
 
     public void refresh(){
-        player_hp.setText("HP: " + Double.toString(ninja.getHp()));
-        player_adrenaline.setText("Adrenaline: " + Double.toString(ninja.getAdrenaline()));
+        player_hp.setText("HP: ");
+        player_adrenaline.setText("Adrenaline: " );
         android_hp.setText("HP: " + Double.toString(knight.getHp()));
         android_adrenaline.setText("Adrenaline: " + Double.toString(knight.getAdrenaline()));
+        player_health_bar.setProgress(((int) ninja.getHp()));
+        player_adrenaline_bar.setProgress(((int) ninja.getAdrenaline()));
     }
 
     public void showToast(){
