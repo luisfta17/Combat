@@ -1,7 +1,9 @@
 package com.example.codeclan.combat;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -25,9 +27,28 @@ public class GameActivity extends AppCompatActivity {
         android_hp = findViewById(R.id.android_hp);
         basic_att_bttn = findViewById(R.id.basic_att_bttn);
         special_att_bttn = findViewById(R.id.special_att_bttn);
+        // Refresh method to update hud status
+        refresh();
+    }
+
+    public void onBasicAttBttnClicked(View view){
+        if (ninja.isAlive()){
+            ninja.basicAttack(knight);
+        }
+        refresh();
+        if (knight.isAlive()){
+            knight.actionBack(ninja);
+        }
+        refresh();
+    }
+    
+
+    public void refresh(){
         player_hp.setText("HP: " + Double.toString(ninja.getHp()));
         player_adrenaline.setText("Adrenaline: " + Double.toString(ninja.getAdrenaline()));
         android_hp.setText("HP: " + Double.toString(knight.getHp()));
         android_adrenaline.setText("Adrenaline: " + Double.toString(knight.getAdrenaline()));
     }
+
+
 }
