@@ -55,16 +55,18 @@ public class GameActivity extends AppCompatActivity{
     }
 
     public void onSpecialAttBttnClicked(View view){
-        if (ninja.isAlive() && knight.isAlive()){
-            ninja.specialAttack(knight);
-            refresh();
-            handler.postDelayed(checkingDeadPlayers, 1);
-            if (knight.isAlive() && ninja.isAlive()){
-                handler.postDelayed(actionBackDelayed, 1500);
-                handler.postDelayed(checkingDeadPlayers, 1700);
+        if (ninja.getAdrenaline() > 50){
+            if (ninja.isAlive() && knight.isAlive()){
+                ninja.specialAttack(knight);
+                refresh();
+                handler.postDelayed(checkingDeadPlayers, 1);
+                if (knight.isAlive() && ninja.isAlive()){
+                    handler.postDelayed(actionBackDelayed, 1500);
+                    handler.postDelayed(checkingDeadPlayers, 1700);
+                }
             }
+            refresh();
         }
-        refresh();
     }
 
 

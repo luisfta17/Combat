@@ -7,7 +7,7 @@
     <string name="android_hp">HP:</string>
     <string name="android_adrenaline">Adrenaline</string>
     <string name="basic_att">Basic Attack</string>
-    <string name="special_att">Special Attack</string>
+    <string name="special_att">Special Attack (50) </string>
     <string name="restart">Restart </string>
     <string name="cancel">Cancel</string>
     <string name="win">You win! - Do you want to play again?</string>
