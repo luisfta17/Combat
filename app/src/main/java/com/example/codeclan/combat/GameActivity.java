@@ -31,7 +31,9 @@ public class GameActivity extends AppCompatActivity{
     Knight knight = new Knight("Android");
     CharSequence win = "You win! - game will restart in a second";
     CharSequence lose = "You lose :-( - game will restart in a second";
+    CharSequence notEnough = "You don't have enough Adrenaline!";
     int duration = Toast.LENGTH_LONG;
+    int shortMessage = Toast.LENGTH_SHORT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,8 @@ public class GameActivity extends AppCompatActivity{
                 }
             }
             refresh();
+        } else {
+            showNotEnoughAdrenaline();
         }
     }
 
@@ -110,6 +114,12 @@ public class GameActivity extends AppCompatActivity{
             toast.show();
             handler.postDelayed(restartGame, 3000);
         }
+    }
+
+    public void showNotEnoughAdrenaline(){
+        Context context = getApplicationContext();
+        Toast toast = Toast.makeText(context, notEnough, shortMessage);
+        toast.show();
     }
 
     private Runnable actionBackDelayed = new Runnable() {
