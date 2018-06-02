@@ -52,7 +52,4 @@ public abstract class Warrior extends Character {
             this.basicAttack(character);
         }
     }
-
-
-
 }
