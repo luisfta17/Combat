@@ -32,16 +32,28 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onBasicAttBttnClicked(View view){
-        if (ninja.isAlive()){
+        if (ninja.isAlive() && knight.isAlive()){
             ninja.basicAttack(knight);
-        }
-        refresh();
-        if (knight.isAlive()){
-            knight.actionBack(ninja);
+            refresh();
+            if (ninja.isAlive() && knight.isAlive()){
+                knight.actionBack(ninja);
+            }
         }
         refresh();
     }
-    
+
+    public void onSpecialAttBttnClicked(View view){
+        if (ninja.isAlive() && knight.isAlive()){
+            ninja.specialAttack(knight);
+            refresh();
+            if (knight.isAlive() && ninja.isAlive()){
+                knight.actionBack(ninja);
+                refresh();
+            }
+        }
+        refresh();
+    }
+
 
     public void refresh(){
         player_hp.setText("HP: " + Double.toString(ninja.getHp()));
