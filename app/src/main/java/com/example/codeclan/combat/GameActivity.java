@@ -23,7 +23,9 @@ public class GameActivity extends AppCompatActivity{
     Button basic_att_bttn;
     Button special_att_bttn;
     ProgressBar player_health_bar;
+    ProgressBar android_health_bar;
     ProgressBar player_adrenaline_bar;
+    ProgressBar android_adrenaline_bar;
     Handler handler = new Handler();
     Ninja ninja = new Ninja("Player 1");
     Knight knight = new Knight("Android");
@@ -42,11 +44,17 @@ public class GameActivity extends AppCompatActivity{
         basic_att_bttn = findViewById(R.id.basic_att_bttn);
         special_att_bttn = findViewById(R.id.special_att_bttn);
         player_health_bar = findViewById(R.id.player_health_bar);
+        android_health_bar = findViewById(R.id.android_health_bar);
         player_adrenaline_bar = findViewById(R.id.player_adrenaline_bar);
+        android_adrenaline_bar = findViewById(R.id.android_adrenaline_bar);
         player_health_bar.setMax((int) ninja.getMaxHp());
+        android_health_bar.setMax((int) knight.getMaxHp());
         player_adrenaline_bar.setMax((int) ninja.getMaxAdrenaline());
+        android_adrenaline_bar.setMax((int) knight.getMaxAdrenaline());
         player_health_bar.setScaleY(4f);
+        android_health_bar.setScaleY(4f);
         player_adrenaline_bar.setScaleY(4f);
+        android_adrenaline_bar.setScaleY(4f);
         // Refresh method to update hud status
         refresh();
 
@@ -83,10 +91,12 @@ public class GameActivity extends AppCompatActivity{
     public void refresh(){
         player_hp.setText("HP: ");
         player_adrenaline.setText("Adrenaline: " );
-        android_hp.setText("HP: " + Double.toString(knight.getHp()));
-        android_adrenaline.setText("Adrenaline: " + Double.toString(knight.getAdrenaline()));
+        android_hp.setText("HP: ");
+        android_adrenaline.setText("Adrenaline: ");
         player_health_bar.setProgress(((int) ninja.getHp()));
+        android_health_bar.setProgress(((int) knight.getHp()));
         player_adrenaline_bar.setProgress(((int) ninja.getAdrenaline()));
+        android_adrenaline_bar.setProgress(((int) knight.getAdrenaline()));
     }
 
     public void showToast(){
