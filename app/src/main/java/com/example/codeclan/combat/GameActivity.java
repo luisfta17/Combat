@@ -3,6 +3,7 @@ package com.example.codeclan.combat;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ public class GameActivity extends AppCompatActivity {
     TextView android_adrenaline;
     Button basic_att_bttn;
     Button special_att_bttn;
+    Handler handler = new Handler();
     Ninja ninja = new Ninja("Player 1");
     Knight knight = new Knight("Android");
 
@@ -36,10 +38,9 @@ public class GameActivity extends AppCompatActivity {
             ninja.basicAttack(knight);
             refresh();
             if (ninja.isAlive() && knight.isAlive()){
-                knight.actionBack(ninja);
+                handler.postDelayed(actionBackDelayed, 2000);
             }
         }
-        refresh();
     }
 
     public void onSpecialAttBttnClicked(View view){
@@ -47,8 +48,7 @@ public class GameActivity extends AppCompatActivity {
             ninja.specialAttack(knight);
             refresh();
             if (knight.isAlive() && ninja.isAlive()){
-                knight.actionBack(ninja);
-                refresh();
+                handler.postDelayed(actionBackDelayed, 2000);
             }
         }
         refresh();
@@ -61,6 +61,17 @@ public class GameActivity extends AppCompatActivity {
         android_hp.setText("HP: " + Double.toString(knight.getHp()));
         android_adrenaline.setText("Adrenaline: " + Double.toString(knight.getAdrenaline()));
     }
+
+    
+    private Runnable actionBackDelayed = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("Handlers", "Action back with delay");
+            knight.actionBack(ninja);
+            refresh();
+        }
+    };
+
 
 
 }
