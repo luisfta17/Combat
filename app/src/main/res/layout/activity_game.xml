@@ -8,7 +8,7 @@
     android:background="@drawable/background">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ninja"
         android:layout_width="210dp"
         android:layout_height="232dp"
         android:layout_marginBottom="8dp"
@@ -16,7 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/knight"
         app:layout_constraintHorizontal_bias="0.236"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,15 +24,100 @@
         app:srcCompat="@drawable/ninja" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/knight"
         android:layout_width="213dp"
         android:layout_height="202dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.941"
         app:srcCompat="@drawable/knight" />
+
+    <LinearLayout
+        android:layout_width="109dp"
+        android:layout_height="132dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/player_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/player_1"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/hp_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/player_hp"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/adrenaline_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/player_adrenaline"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="128dp"
+        android:layout_height="137dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/android"
+            android:textAlignment="viewEnd"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/android_hp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/android_hp"
+            android:textAlignment="viewEnd"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/android_adrenaline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/android_adrenaline"
+            android:textAlignment="viewEnd"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
