@@ -76,7 +76,6 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="1dp"
             android:indeterminate="false"
             android:progressBackgroundTint="@android:color/holo_orange_dark"
             android:progressTint="@android:color/holo_red_light"
