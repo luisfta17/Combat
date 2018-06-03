@@ -143,7 +143,10 @@ public class GameActivity extends AppCompatActivity{
         public void run() {
             Log.d("Handlers", "Action back with delay");
             knight.actionBack(ninja);
-            refresh();
+            samurai.setImageResource(R.drawable.samurai_gethit);
+            samurai_stands = (AnimationDrawable) samurai.getDrawable();
+            samurai_stands.start();
+            handler.postDelayed(refreshWithDelay, 900);
         }
     };
 
