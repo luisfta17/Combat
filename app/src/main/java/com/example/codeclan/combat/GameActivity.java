@@ -70,11 +70,12 @@ public class GameActivity extends AppCompatActivity{
     public void onBasicAttBttnClicked(View view){
         if (ninja.isAlive() && knight.isAlive()){
             ninja.basicAttack(knight);
-            refresh();
-            handler.postDelayed(checkingDeadPlayers, 1);
+            samuraiAttackAnimation();
+            handler.postDelayed(refreshWithDelay, 1000);
+            handler.postDelayed(checkingDeadPlayers, 1300);
             if (ninja.isAlive() && knight.isAlive()){
-                handler.postDelayed(actionBackDelayed, 1500);
-                handler.postDelayed(checkingDeadPlayers, 1700);
+                handler.postDelayed(actionBackDelayed, 2000);
+                handler.postDelayed(checkingDeadPlayers, 2300);
             }
         }
     }
@@ -94,6 +95,13 @@ public class GameActivity extends AppCompatActivity{
         } else {
             showNotEnoughAdrenaline();
         }
+    }
+
+
+    public void samuraiAttackAnimation(){
+        samurai.setImageResource(R.drawable.samurai_attack);
+        samurai_stands = (AnimationDrawable) samurai.getDrawable();
+        samurai_stands.start();
     }
 
 
@@ -161,6 +169,15 @@ public class GameActivity extends AppCompatActivity{
         }
     };
 
+
+    private Runnable refreshWithDelay = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("Handlers", "Checking for dead players");
+            refresh();
+
+        }
+    };
 
 
 }
