@@ -75,7 +75,7 @@ public class GameActivity extends AppCompatActivity{
             handler.postDelayed(checkingDeadPlayers, 1300);
             if (ninja.isAlive() && knight.isAlive()){
                 handler.postDelayed(actionBackDelayed, 2000);
-                handler.postDelayed(checkingDeadPlayers, 2300);
+                handler.postDelayed(checkingDeadPlayers, 3500);
             }
         }
     }
@@ -88,7 +88,7 @@ public class GameActivity extends AppCompatActivity{
                 handler.postDelayed(checkingDeadPlayers, 1);
                 if (knight.isAlive() && ninja.isAlive()){
                     handler.postDelayed(actionBackDelayed, 1500);
-                    handler.postDelayed(checkingDeadPlayers, 1700);
+                    handler.postDelayed(checkingDeadPlayers, 2000);
                 }
             }
             refresh();
@@ -97,6 +97,12 @@ public class GameActivity extends AppCompatActivity{
         }
     }
 
+
+    public void samuraiDiesAnimation(){
+        samurai.setImageResource(R.drawable.samurai_dies);
+        samurai_stands = (AnimationDrawable) samurai.getDrawable();
+        samurai_stands.start();
+    }
 
     public void samuraiAttackAnimation(){
         samurai.setImageResource(R.drawable.samurai_attack);
@@ -128,7 +134,7 @@ public class GameActivity extends AppCompatActivity{
         } else {
             Toast toast = Toast.makeText(context, lose, duration);
             toast.show();
-            handler.postDelayed(restartGame, 3000);
+            handler.postDelayed(restartGame, 5000);
         }
     }
 
@@ -166,7 +172,10 @@ public class GameActivity extends AppCompatActivity{
         @Override
         public void run() {
             Log.d("Handlers", "Checking for dead players");
-            if (!ninja.isAlive() || !knight.isAlive()){
+            if (!ninja.isAlive()){
+                samuraiDiesAnimation();
+                showToast();
+            } if(!knight.isAlive()){
                 showToast();
             }
         }
@@ -176,11 +185,11 @@ public class GameActivity extends AppCompatActivity{
     private Runnable refreshWithDelay = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "Checking for dead players");
+            Log.d("Handlers", "Refresh with delay");
             refresh();
 
         }
     };
-
+    
 
 }
