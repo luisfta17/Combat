@@ -107,11 +107,30 @@ public class GameActivity extends AppCompatActivity{
         samuraiAnimations.start();
     }
 
+    public void samuraiGetsHitAnimation(){
+        samurai.setImageResource(R.drawable.samurai_gethit);
+        samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
+        samuraiAnimations.start();
+    }
+
     public void samuraiAttackAnimation(){
         samurai.setImageResource(R.drawable.samurai_attack);
         samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
         samuraiAnimations.start();
     }
+
+        public void knightAttackAnimation(){
+        knightImage.setImageResource(R.drawable.knight_attack);
+        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
+        knightAnimations.start();
+    }
+
+        public void knightStandsAnimation(){
+        knightImage.setImageResource(R.drawable.knight_stands);
+        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
+        knightAnimations.start();
+    }
+
 
 
     public void refresh(){
@@ -156,10 +175,10 @@ public class GameActivity extends AppCompatActivity{
         public void run() {
             Log.d("Handlers", "Action back with delay");
             knight.actionBack(ninja);
-            samurai.setImageResource(R.drawable.samurai_gethit);
-            samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
-            samuraiAnimations.start();
-            handler.postDelayed(refreshWithDelay, 900);
+            handler.postDelayed(samuraiGetHitWithDelay, 650);
+            knightAttackAnimation();
+            handler.postDelayed(knightStandsWithDelay, 900);
+            handler.postDelayed(refreshWithDelay, 1000);
         }
     };
 
@@ -195,6 +214,22 @@ public class GameActivity extends AppCompatActivity{
             Log.d("Handlers", "Refresh with delay");
             refresh();
 
+        }
+    };
+
+    private Runnable samuraiGetHitWithDelay = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("Handlers", "samurai get hit animation with delay");
+            samuraiGetsHitAnimation();
+        }
+    };
+
+    private Runnable knightStandsWithDelay = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("Handlers", "Knight stands animation with delay");
+            knightStandsAnimation();
         }
     };
     
