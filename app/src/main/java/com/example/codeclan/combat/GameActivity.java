@@ -5,17 +5,21 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity{
+    ImageView samurai;
+    AnimationDrawable samurai_stands;
     TextView player_hp;
     TextView player_adrenaline;
     TextView android_hp;
@@ -39,6 +43,7 @@ public class GameActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        samurai = findViewById(R.id.ninja);
         player_hp = findViewById(R.id.hp_counter);
         player_adrenaline = findViewById(R.id.adrenaline_counter);
         android_adrenaline = findViewById(R.id.android_adrenaline);
@@ -101,6 +106,9 @@ public class GameActivity extends AppCompatActivity{
         android_health_bar.setProgress(((int) knight.getHp()));
         player_adrenaline_bar.setProgress(((int) ninja.getAdrenaline()));
         android_adrenaline_bar.setProgress(((int) knight.getAdrenaline()));
+        samurai.setImageResource(R.drawable.samurai_stands);
+        samurai_stands = (AnimationDrawable) samurai.getDrawable();
+        samurai_stands.start();
     }
 
     public void showToast(){
