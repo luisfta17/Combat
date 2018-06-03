@@ -1,10 +1,7 @@
 package com.example.codeclan.combat;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
+
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -65,9 +62,9 @@ public class GameActivity extends AppCompatActivity{
         android_health_bar.setScaleY(4f);
         player_adrenaline_bar.setScaleY(4f);
         android_adrenaline_bar.setScaleY(4f);
+        ninja.setHp(50);
         // Refresh method to update hud status
         refresh();
-
     }
 
     public void onBasicAttBttnClicked(View view){
@@ -76,11 +73,11 @@ public class GameActivity extends AppCompatActivity{
             samuraiAttackAnimation();
             handler.postDelayed(samuraiStandsWithDelay, 1000);
             handler.postDelayed(knightGetHitWithDelay, 400);
-            handler.postDelayed(refreshWithDelay, 1650);
-            handler.postDelayed(checkingDeadPlayers, 1950);
+            handler.postDelayed(refreshWithDelay, 1400);
+            handler.postDelayed(checkingDeadPlayers, 1700);
             if (ninja.isAlive() && knight.isAlive()){
-                handler.postDelayed(actionBackDelayed, 2650);
-                handler.postDelayed(checkingDeadPlayers, 4150);
+                handler.postDelayed(actionBackDelayed, 2400);
+                handler.postDelayed(checkingDeadPlayers, 4500);
             }
         }
     }
@@ -91,12 +88,12 @@ public class GameActivity extends AppCompatActivity{
                 ninja.specialAttack(knight);
                 samuraiAttackAnimation();
                 handler.postDelayed(samuraiStandsWithDelay, 1000);
-                handler.postDelayed(knightGetHitWithDelay, 550);
-                handler.postDelayed(refreshWithDelay, 1000);
-                handler.postDelayed(checkingDeadPlayers, 1300);
+                handler.postDelayed(knightGetHitWithDelay, 400);
+                handler.postDelayed(refreshWithDelay, 1400);
+                handler.postDelayed(checkingDeadPlayers, 1700);
                 if (knight.isAlive() && ninja.isAlive()){
-                    handler.postDelayed(actionBackDelayed, 2000);
-                    handler.postDelayed(checkingDeadPlayers, 3500);
+                    handler.postDelayed(actionBackDelayed, 2400);
+                    handler.postDelayed(checkingDeadPlayers, 4500);
                 }
             }
         } else {
@@ -143,6 +140,12 @@ public class GameActivity extends AppCompatActivity{
 
     public void knightStandsAnimation(){
         knightImage.setImageResource(R.drawable.knight_stands);
+        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
+        knightAnimations.start();
+    }
+
+    public void knightDiesAnimation(){
+        knightImage.setImageResource(R.drawable.knight_dies);
         knightAnimations = (AnimationDrawable) knightImage.getDrawable();
         knightAnimations.start();
     }
@@ -213,6 +216,7 @@ public class GameActivity extends AppCompatActivity{
                 samuraiDiesAnimation();
                 showToast();
             } if(!knight.isAlive()){
+                knightDiesAnimation();
                 showToast();
             }
         }
