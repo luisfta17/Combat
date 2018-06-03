@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity{
     ImageView samurai;
-    AnimationDrawable samurai_stands;
+    AnimationDrawable samuraiAnimations;
     TextView player_hp;
     TextView player_adrenaline;
     TextView android_hp;
@@ -84,14 +84,14 @@ public class GameActivity extends AppCompatActivity{
         if (ninja.getAdrenaline() > 50){
             if (ninja.isAlive() && knight.isAlive()){
                 ninja.specialAttack(knight);
-                refresh();
-                handler.postDelayed(checkingDeadPlayers, 1);
+                samuraiAttackAnimation();
+                handler.postDelayed(refreshWithDelay, 1000);
+                handler.postDelayed(checkingDeadPlayers, 1300);
                 if (knight.isAlive() && ninja.isAlive()){
-                    handler.postDelayed(actionBackDelayed, 1500);
-                    handler.postDelayed(checkingDeadPlayers, 2000);
+                    handler.postDelayed(actionBackDelayed, 2000);
+                    handler.postDelayed(checkingDeadPlayers, 3500);
                 }
             }
-            refresh();
         } else {
             showNotEnoughAdrenaline();
         }
@@ -100,14 +100,14 @@ public class GameActivity extends AppCompatActivity{
 
     public void samuraiDiesAnimation(){
         samurai.setImageResource(R.drawable.samurai_dies);
-        samurai_stands = (AnimationDrawable) samurai.getDrawable();
-        samurai_stands.start();
+        samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
+        samuraiAnimations.start();
     }
 
     public void samuraiAttackAnimation(){
         samurai.setImageResource(R.drawable.samurai_attack);
-        samurai_stands = (AnimationDrawable) samurai.getDrawable();
-        samurai_stands.start();
+        samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
+        samuraiAnimations.start();
     }
 
 
@@ -121,8 +121,8 @@ public class GameActivity extends AppCompatActivity{
         player_adrenaline_bar.setProgress(((int) ninja.getAdrenaline()));
         android_adrenaline_bar.setProgress(((int) knight.getAdrenaline()));
         samurai.setImageResource(R.drawable.samurai_stands);
-        samurai_stands = (AnimationDrawable) samurai.getDrawable();
-        samurai_stands.start();
+        samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
+        samuraiAnimations.start();
     }
 
     public void showToast(){
@@ -130,7 +130,7 @@ public class GameActivity extends AppCompatActivity{
         if(ninja.isAlive()){
             Toast toast = Toast.makeText(context, win, duration);
             toast.show();
-            handler.postDelayed(restartGame, 3000);
+            handler.postDelayed(restartGame, 5000);
         } else {
             Toast toast = Toast.makeText(context, lose, duration);
             toast.show();
@@ -150,8 +150,8 @@ public class GameActivity extends AppCompatActivity{
             Log.d("Handlers", "Action back with delay");
             knight.actionBack(ninja);
             samurai.setImageResource(R.drawable.samurai_gethit);
-            samurai_stands = (AnimationDrawable) samurai.getDrawable();
-            samurai_stands.start();
+            samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
+            samuraiAnimations.start();
             handler.postDelayed(refreshWithDelay, 900);
         }
     };

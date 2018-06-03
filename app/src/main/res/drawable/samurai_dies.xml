@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/samurai_dies_0"
-        android:duration="150"/>
+        android:duration="100"/>
     <item android:drawable="@drawable/samurai_dies_1"
-        android:duration="150"/>
+        android:duration="100"/>
     <item android:drawable="@drawable/samurai_dies_2"
-        android:duration="150"/>
+        android:duration="100"/>
     <item android:drawable="@drawable/samurai_dies_3"
-        android:duration="150"/>
+        android:duration="100"/>
     <item android:drawable="@drawable/samurai_dies_4"
-        android:duration="150"/>
+        android:duration="100"/>
     <item android:drawable="@drawable/samurai_dies_5"
-        android:duration="150"/>
+        android:duration="100"/>
     <item android:drawable="@drawable/samurai_dies_6"
-        android:duration="150"/>
+        android:duration="100"/>
     <item android:drawable="@drawable/samurai_dies_7"
-        android:duration="150"/>
+        android:duration="100"/>
     <item android:drawable="@drawable/samurai_dies_8"
-        android:duration="150"/>
+        android:duration="100"/>
     <item android:drawable="@drawable/samurai_dies_9"
         android:duration="10000"/>
 </animation-list>
