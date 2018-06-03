@@ -19,7 +19,9 @@ import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity{
     ImageView samurai;
+    ImageView knightImage;
     AnimationDrawable samuraiAnimations;
+    AnimationDrawable knightAnimations;
     TextView player_hp;
     TextView player_adrenaline;
     TextView android_hp;
@@ -44,6 +46,7 @@ public class GameActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         samurai = findViewById(R.id.ninja);
+        knightImage = findViewById(R.id.knight);
         player_hp = findViewById(R.id.hp_counter);
         player_adrenaline = findViewById(R.id.adrenaline_counter);
         android_adrenaline = findViewById(R.id.android_adrenaline);
@@ -123,6 +126,10 @@ public class GameActivity extends AppCompatActivity{
         samurai.setImageResource(R.drawable.samurai_stands);
         samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
         samuraiAnimations.start();
+        knightImage.setImageResource(R.drawable.knight_stands);
+        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
+        knightAnimations.start();
+
     }
 
     public void showToast(){

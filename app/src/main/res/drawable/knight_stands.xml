@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/knight_stands_0"
+        android:duration="100"/>
+    <item android:drawable="@drawable/knight_stands_1"
+        android:duration="100"/>
+    <item android:drawable="@drawable/knight_stands_2"
+        android:duration="100"/>
+    <item android:drawable="@drawable/knight_stands_3"
+        android:duration="100"/>
+    <item android:drawable="@drawable/knight_stands_4"
+        android:duration="100"/>
+    <item android:drawable="@drawable/knight_stands_5"
+        android:duration="100"/>
+    <item android:drawable="@drawable/knight_stands_6"
+        android:duration="100"/>
+    <item android:drawable="@drawable/knight_stands_7"
+        android:duration="100"/>
+    <item android:drawable="@drawable/knight_stands_8"
+        android:duration="100"/>
+    <item android:drawable="@drawable/knight_stands_9"
+        android:duration="100"/>
+</animation-list>
