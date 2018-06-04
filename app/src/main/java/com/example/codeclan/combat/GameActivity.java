@@ -4,6 +4,7 @@ package com.example.codeclan.combat;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class GameActivity extends AppCompatActivity{
     ProgressBar player_adrenaline_bar;
     ProgressBar android_adrenaline_bar;
     Handler handler = new Handler();
+    MediaPlayer battleMusic;
     Ninja ninja = new Ninja("Player 1");
     Knight knight = new Knight("Android");
     CharSequence win = "You win! - game will restart in a second";
@@ -67,6 +69,9 @@ public class GameActivity extends AppCompatActivity{
         android_health_bar.setScaleY(4f);
         player_adrenaline_bar.setScaleY(4f);
         android_adrenaline_bar.setScaleY(4f);
+        battleMusic = MediaPlayer.create(this, R.raw.battletheme);
+        battleMusic.start();
+        battleMusic.setLooping(true);
         // Refresh method to update hud status
         refresh();
     }
