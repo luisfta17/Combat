@@ -2,6 +2,7 @@ package com.example.codeclan.combat;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -159,12 +160,23 @@ public class GameActivity extends AppCompatActivity{
 
     public void player1ShowDamageReceived(double initialHp){
         double total = initialHp - ninja.getHp();
-        android_damage_done.setText(Double.toString(total));
+        if (total < 51){
+            android_damage_done.setText(Double.toString(total));
+        } else {
+            android_damage_done.setTextColor(Color.RED);
+            android_damage_done.setText("CRITICAL " + Double.toString(total));
+        }
     }
 
     public void androidShowDamageReceived(double initialHp){
         double total = initialHp - knight.getHp();
-        player1_damage_done.setText(Double.toString(total));
+        if (total < 51){
+            player1_damage_done.setText(Double.toString(total));
+
+        } else {
+            player1_damage_done.setTextColor(Color.RED);
+            player1_damage_done.setText("CRITICAL " + Double.toString(total));
+        }
     }
 
 
@@ -174,6 +186,8 @@ public class GameActivity extends AppCompatActivity{
         player_adrenaline.setText("Adrenaline: " );
         android_hp.setText("HP: ");
         android_adrenaline.setText("Adrenaline: ");
+        player1_damage_done.setTextColor(Color.rgb(255,187,51));
+        android_damage_done.setTextColor(Color.rgb(255,187,51));
         player1_damage_done.setText("");
         android_damage_done.setText("");
         player_health_bar.setProgress(((int) ninja.getHp()));
