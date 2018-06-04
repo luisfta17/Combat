@@ -12,4 +12,6 @@
     <string name="cancel">Cancel</string>
     <string name="win">You win! - Do you want to play again?</string>
     <string name="lose">You lose :-( - Do you want to play again?</string>
+    <string name="player1_damage_received"></string>
+    <string name="android_damage_received"></string>
 </resources>

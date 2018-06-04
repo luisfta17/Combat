@@ -23,6 +23,8 @@ public class GameActivity extends AppCompatActivity{
     TextView player_adrenaline;
     TextView android_hp;
     TextView android_adrenaline;
+    TextView player1_damage_done;
+    TextView android_damage_done;
     Button basic_att_bttn;
     Button special_att_bttn;
     ProgressBar player_health_bar;
@@ -54,6 +56,8 @@ public class GameActivity extends AppCompatActivity{
         android_health_bar = findViewById(R.id.android_health_bar);
         player_adrenaline_bar = findViewById(R.id.player_adrenaline_bar);
         android_adrenaline_bar = findViewById(R.id.android_adrenaline_bar);
+        player1_damage_done = findViewById(R.id.player1_damage_received);
+        android_damage_done = findViewById(R.id.android_damage_received);
         player_health_bar.setMax((int) ninja.getMaxHp());
         android_health_bar.setMax((int) knight.getMaxHp());
         player_adrenaline_bar.setMax((int) ninja.getMaxAdrenaline());
@@ -62,14 +66,15 @@ public class GameActivity extends AppCompatActivity{
         android_health_bar.setScaleY(4f);
         player_adrenaline_bar.setScaleY(4f);
         android_adrenaline_bar.setScaleY(4f);
-        ninja.setHp(50);
         // Refresh method to update hud status
         refresh();
     }
 
     public void onBasicAttBttnClicked(View view){
         if (ninja.isAlive() && knight.isAlive()){
+            double initialHP = knight.getHp();
             ninja.basicAttack(knight);
+            androidShowDamageReceived(initialHP);
             samuraiAttackAnimation();
             handler.postDelayed(samuraiStandsWithDelay, 1000);
             handler.postDelayed(knightGetHitWithDelay, 400);
@@ -85,7 +90,9 @@ public class GameActivity extends AppCompatActivity{
     public void onSpecialAttBttnClicked(View view){
         if (ninja.getAdrenaline() > 50){
             if (ninja.isAlive() && knight.isAlive()){
+                double initialHP = knight.getHp();
                 ninja.specialAttack(knight);
+                androidShowDamageReceived(initialHP);
                 samuraiAttackAnimation();
                 handler.postDelayed(samuraiStandsWithDelay, 1000);
                 handler.postDelayed(knightGetHitWithDelay, 400);
@@ -150,6 +157,16 @@ public class GameActivity extends AppCompatActivity{
         knightAnimations.start();
     }
 
+    public void player1ShowDamageReceived(double initialHp){
+        double total = initialHp - ninja.getHp();
+        android_damage_done.setText(Double.toString(total));
+    }
+
+    public void androidShowDamageReceived(double initialHp){
+        double total = initialHp - knight.getHp();
+        player1_damage_done.setText(Double.toString(total));
+    }
+
 
 
     public void refresh(){
@@ -157,6 +174,8 @@ public class GameActivity extends AppCompatActivity{
         player_adrenaline.setText("Adrenaline: " );
         android_hp.setText("HP: ");
         android_adrenaline.setText("Adrenaline: ");
+        player1_damage_done.setText("");
+        android_damage_done.setText("");
         player_health_bar.setProgress(((int) ninja.getHp()));
         android_health_bar.setProgress(((int) knight.getHp()));
         player_adrenaline_bar.setProgress(((int) ninja.getAdrenaline()));
@@ -188,7 +207,9 @@ public class GameActivity extends AppCompatActivity{
         @Override
         public void run() {
             Log.d("Handlers", "Action back with delay");
+            double initialHP = ninja.getHp();
             knight.actionBack(ninja);
+            player1ShowDamageReceived(initialHP);
             handler.postDelayed(samuraiGetHitWithDelay, 650);
             knightAttackAnimation();
             handler.postDelayed(knightStandsWithDelay, 900);
