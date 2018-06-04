@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/cruz_0"
+        android:duration="100"/>
+    <item android:drawable="@drawable/cruz_1"
+        android:duration="100"/>
+    <item android:drawable="@drawable/cruz_2"
+        android:duration="100"/>
+    <item android:drawable="@drawable/cruz_3"
+        android:duration="100"/>
+    <item android:drawable="@drawable/cruz_4"
+        android:duration="100"/>
+    <item android:drawable="@drawable/cruz_5"
+        android:duration="100"/>
+</animation-list>
