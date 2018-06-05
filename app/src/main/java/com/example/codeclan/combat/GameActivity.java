@@ -87,7 +87,7 @@ public class GameActivity extends AppCompatActivity{
 
     public void onBasicAttBttnClicked(View view){
         currentTime = System.currentTimeMillis();
-        if(currentTime  >= lastAttackTime  + 3000 ){
+        if(currentTime  >= lastAttackTime  + 2300 ){
             refresh();
             if (ninja.isAlive() && knight.isAlive()){
                 double initialHP = knight.getHp();
@@ -213,8 +213,6 @@ public class GameActivity extends AppCompatActivity{
             player1_damage_done.setText("CRITICAL " + Double.toString(total));
         }
     }
-
-
 
     public void refresh(){
         player_hp.setText("HP: ");
