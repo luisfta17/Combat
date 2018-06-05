@@ -73,11 +73,14 @@ public class GameActivity extends AppCompatActivity{
         android_health_bar.setMax((int) knight.getMaxHp());
         player_adrenaline_bar.setMax((int) ninja.getMaxAdrenaline());
         android_adrenaline_bar.setMax((int) knight.getMaxAdrenaline());
+        player_hp.setText("HP: ");
+        player_adrenaline.setText("Adrenaline: " );
+        android_hp.setText("HP: ");
+        android_adrenaline.setText("Adrenaline: ");
         player_health_bar.setScaleY(4f);
         android_health_bar.setScaleY(4f);
         player_adrenaline_bar.setScaleY(4f);
         android_adrenaline_bar.setScaleY(4f);
-        special_att_bttn.setEnabled(false);
         battleMusic = MediaPlayer.create(this, R.raw.battletheme);
         battleMusic.start();
         battleMusic.setLooping(true);
@@ -216,10 +219,6 @@ public class GameActivity extends AppCompatActivity{
     }
 
     public void refresh(){
-        player_hp.setText("HP: ");
-        player_adrenaline.setText("Adrenaline: " );
-        android_hp.setText("HP: ");
-        android_adrenaline.setText("Adrenaline: ");
         player1_damage_done.setTextColor(Color.rgb(255,187,51));
         android_damage_done.setTextColor(Color.rgb(255,187,51));
         player1_damage_done.setText("");
@@ -235,6 +234,8 @@ public class GameActivity extends AppCompatActivity{
         knightCruz.setVisibility(View.INVISIBLE);
         if (ninja.getAdrenaline() >= 50){
             special_att_bttn.setEnabled(true);
+        } else {
+            special_att_bttn.setEnabled(false);
         }
     }
 

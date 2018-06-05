@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Combat</string>
-    <string name="player_1">Player 1</string>
+    <string name="player_1">Asuka</string>
     <string name="player_hp">HP:</string>
     <string name="player_adrenaline">Adrenaline:</string>
-    <string name="android">Android</string>
+    <string name="android">Kuro</string>
     <string name="android_hp">HP:    </string>
     <string name="android_adrenaline">Adrenaline</string>
     <string name="basic_att">Basic Attack</string>
