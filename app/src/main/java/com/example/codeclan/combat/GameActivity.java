@@ -19,8 +19,10 @@ import android.widget.Toast;
 public class GameActivity extends AppCompatActivity{
     ImageView samurai;
     ImageView knightImage;
-    ImageView cruzid;
-    AnimationDrawable cruzAnimation;
+    ImageView ninjaCruz;
+    ImageView knightCruz;
+    AnimationDrawable ninjaCruzAnimation;
+    AnimationDrawable knightCruzAnimation;
     AnimationDrawable samuraiAnimations;
     AnimationDrawable knightAnimations;
     TextView player_hp;
@@ -51,7 +53,8 @@ public class GameActivity extends AppCompatActivity{
         setContentView(R.layout.activity_game);
         samurai = findViewById(R.id.ninja);
         knightImage = findViewById(R.id.knight);
-        cruzid = findViewById(R.id.cruzid);
+        ninjaCruz = findViewById(R.id.ninja_cruz);
+        knightCruz = findViewById(R.id.knight_cruz);
         player_hp = findViewById(R.id.hp_counter);
         player_adrenaline = findViewById(R.id.adrenaline_counter);
         android_adrenaline = findViewById(R.id.android_adrenaline);
@@ -160,10 +163,16 @@ public class GameActivity extends AppCompatActivity{
         knightAnimations.start();
     }
 
-    public void cruzShinesAnimation(){
-        cruzid.setImageResource(R.drawable.cruz);
-        cruzAnimation = (AnimationDrawable) cruzid.getDrawable();
-        cruzAnimation.start();
+    public void ninjaCruzShinesAnimation(){
+        ninjaCruz.setImageResource(R.drawable.cruz);
+        ninjaCruzAnimation = (AnimationDrawable) ninjaCruz.getDrawable();
+        ninjaCruzAnimation.start();
+    }
+
+    public void knightCruzShinesAnimation(){
+        knightCruz.setImageResource(R.drawable.cruz);
+        knightCruzAnimation = (AnimationDrawable) knightCruz.getDrawable();
+        knightCruzAnimation.start();
     }
 
     public void knightDiesAnimation(){
@@ -210,7 +219,8 @@ public class GameActivity extends AppCompatActivity{
         android_adrenaline_bar.setProgress(((int) knight.getAdrenaline()));
         samuraiStandsAnimation();
         knightStandsAnimation();
-        cruzShinesAnimation();
+        ninjaCruz.setVisibility(View.INVISIBLE);
+        knightCruz.setVisibility(View.INVISIBLE);
     }
 
     public void showToast(){
@@ -264,9 +274,11 @@ public class GameActivity extends AppCompatActivity{
             Log.d("Handlers", "Checking for dead players");
             if (!ninja.isAlive()){
                 samuraiDiesAnimation();
+                handler.postDelayed(ninjaCruzWithDelay, 600);
                 showToast();
             } if(!knight.isAlive()){
                 knightDiesAnimation();
+                handler.postDelayed(knightCruzWithDelay, 600);
                 showToast();
             }
         }
@@ -311,6 +323,24 @@ public class GameActivity extends AppCompatActivity{
         public void run() {
             Log.d("Handlers", "knight get hit animation with delay");
             knightGetHitAnimation();
+        }
+    };
+
+    private Runnable ninjaCruzWithDelay = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("Handlers", "shows ninja cruz");
+           ninjaCruzShinesAnimation();
+           ninjaCruz.setVisibility(View.VISIBLE);
+        }
+    };
+
+    private Runnable knightCruzWithDelay = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("Handlers", "shows samurai cruz");
+           knightCruzShinesAnimation();
+            knightCruz.setVisibility(View.VISIBLE);
         }
     };
     
