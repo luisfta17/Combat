@@ -108,23 +108,27 @@ public class GameActivity extends AppCompatActivity{
     }
 
     public void onSpecialAttBttnClicked(View view){
-        if (ninja.getAdrenaline() > 50){
-            if (ninja.isAlive() && knight.isAlive()){
-                double initialHP = knight.getHp();
-                ninja.specialAttack(knight);
-                androidShowDamageReceived(initialHP);
-                samuraiAttackAnimation();
-                handler.postDelayed(samuraiStandsWithDelay, 1000);
-                handler.postDelayed(knightGetHitWithDelay, 400);
-                handler.postDelayed(refreshWithDelay, 1400);
-                handler.postDelayed(checkingDeadPlayers, 1700);
-                if (knight.isAlive() && ninja.isAlive()){
-                    handler.postDelayed(actionBackDelayed, 2400);
-                    handler.postDelayed(checkingDeadPlayers, 4500);
+        currentTime = System.currentTimeMillis();
+        if(currentTime  >= lastAttackTime  + 3000 ) {
+            refresh();
+            if (ninja.getAdrenaline() > 50) {
+                if (ninja.isAlive() && knight.isAlive()) {
+                    double initialHP = knight.getHp();
+                    ninja.specialAttack(knight);
+                    androidShowDamageReceived(initialHP);
+                    samuraiAttackAnimation();
+                    handler.postDelayed(samuraiStandsWithDelay, 1000);
+                    handler.postDelayed(knightGetHitWithDelay, 400);
+                    handler.postDelayed(refreshWithDelay, 1400);
+                    handler.postDelayed(checkingDeadPlayers, 1700);
+                    if (knight.isAlive() && ninja.isAlive()) {
+                        handler.postDelayed(actionBackDelayed, 2400);
+                        handler.postDelayed(checkingDeadPlayers, 4500);
+                    }
                 }
+            } else {
+                showNotEnoughAdrenaline();
             }
-        } else {
-            showNotEnoughAdrenaline();
         }
     }
 
