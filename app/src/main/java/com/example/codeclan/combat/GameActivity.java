@@ -46,6 +46,8 @@ public class GameActivity extends AppCompatActivity{
     CharSequence notEnough = "You don't have enough Adrenaline!";
     int duration = Toast.LENGTH_LONG;
     int shortMessage = Toast.LENGTH_SHORT;
+    long lastAttackTime;
+    long currentTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,24 +80,30 @@ public class GameActivity extends AppCompatActivity{
         battleMusic = MediaPlayer.create(this, R.raw.battletheme);
         battleMusic.start();
         battleMusic.setLooping(true);
+
         // Refresh method to update hud status
         refresh();
     }
 
     public void onBasicAttBttnClicked(View view){
-        if (ninja.isAlive() && knight.isAlive()){
-            double initialHP = knight.getHp();
-            ninja.basicAttack(knight);
-            androidShowDamageReceived(initialHP);
-            samuraiAttackAnimation();
-            handler.postDelayed(samuraiStandsWithDelay, 1000);
-            handler.postDelayed(knightGetHitWithDelay, 400);
-            handler.postDelayed(refreshWithDelay, 1400);
-            handler.postDelayed(checkingDeadPlayers, 1700);
+        currentTime = System.currentTimeMillis();
+        if(currentTime  >= lastAttackTime  + 3000 ){
+            refresh();
             if (ninja.isAlive() && knight.isAlive()){
-                handler.postDelayed(actionBackDelayed, 2400);
-                handler.postDelayed(checkingDeadPlayers, 4500);
+                double initialHP = knight.getHp();
+                ninja.basicAttack(knight);
+                androidShowDamageReceived(initialHP);
+                samuraiAttackAnimation();
+                handler.postDelayed(samuraiStandsWithDelay, 1000);
+                handler.postDelayed(knightGetHitWithDelay, 400);
+                handler.postDelayed(refreshWithDelay, 1400);
+                handler.postDelayed(checkingDeadPlayers, 1700);
+                if (ninja.isAlive() && knight.isAlive()){
+                    handler.postDelayed(actionBackDelayed, 2400);
+                    handler.postDelayed(checkingDeadPlayers, 4500);
+                }
             }
+
         }
     }
 
@@ -217,6 +225,7 @@ public class GameActivity extends AppCompatActivity{
         android_health_bar.setProgress(((int) knight.getHp()));
         player_adrenaline_bar.setProgress(((int) ninja.getAdrenaline()));
         android_adrenaline_bar.setProgress(((int) knight.getAdrenaline()));
+        lastAttackTime = System.currentTimeMillis();
         samuraiStandsAnimation();
         knightStandsAnimation();
         ninjaCruz.setVisibility(View.INVISIBLE);
