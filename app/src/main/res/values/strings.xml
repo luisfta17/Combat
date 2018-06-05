@@ -15,5 +15,6 @@
     <string name="lose">You lose :-( - Do you want to play again?</string>
     <string name="player1_damage_received"></string>
     <string name="android_damage_received"></string>
-    <string name="play_bttn"> Play </string>
+    <string name="play_bttn"> Play as Asuka </string>
+    <string name="play_bttn2"> Play as Hiroshi </string>
 </resources>
