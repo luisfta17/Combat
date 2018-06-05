@@ -77,6 +77,7 @@ public class GameActivity extends AppCompatActivity{
         android_health_bar.setScaleY(4f);
         player_adrenaline_bar.setScaleY(4f);
         android_adrenaline_bar.setScaleY(4f);
+        special_att_bttn.setEnabled(false);
         battleMusic = MediaPlayer.create(this, R.raw.battletheme);
         battleMusic.start();
         battleMusic.setLooping(true);
@@ -232,6 +233,9 @@ public class GameActivity extends AppCompatActivity{
         knightStandsAnimation();
         ninjaCruz.setVisibility(View.INVISIBLE);
         knightCruz.setVisibility(View.INVISIBLE);
+        if (ninja.getAdrenaline() >= 50){
+            special_att_bttn.setEnabled(true);
+        }
     }
 
     public void showToast(){
