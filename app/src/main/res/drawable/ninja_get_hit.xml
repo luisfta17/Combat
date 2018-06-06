@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ninja_get_hit_0"
+        android:duration="100"/>
+    <item android:drawable="@drawable/ninja_get_hit_1"
+        android:duration="100"/>
+    <item android:drawable="@drawable/ninja_get_hit_2"
+        android:duration="100"/>
+    <item android:drawable="@drawable/ninja_get_hit_3"
+        android:duration="100"/>
+    <item android:drawable="@drawable/ninja_get_hit_4"
+        android:duration="100"/>
+    <item android:drawable="@drawable/ninja_get_hit_5"
+        android:duration="100"/>
+    <item android:drawable="@drawable/ninja_get_hit_6"
+        android:duration="100"/>
+    <item android:drawable="@drawable/ninja_get_hit_7"
+        android:duration="100"/>
+    <item android:drawable="@drawable/ninja_get_hit_8"
+        android:duration="100"/>
+    <item android:drawable="@drawable/ninja_get_hit_9"
+        android:duration="100"/>
+</animation-list>

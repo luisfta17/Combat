@@ -73,10 +73,6 @@ public class GameActivity extends AppCompatActivity{
         android_health_bar.setMax((int) knight.getMaxHp());
         player_adrenaline_bar.setMax((int) ninja.getMaxAdrenaline());
         android_adrenaline_bar.setMax((int) knight.getMaxAdrenaline());
-        player_hp.setText("HP: ");
-        player_adrenaline.setText("Adrenaline: " );
-        android_hp.setText("HP: ");
-        android_adrenaline.setText("Adrenaline: ");
         player_health_bar.setScaleY(4f);
         android_health_bar.setScaleY(4f);
         player_adrenaline_bar.setScaleY(4f);
@@ -100,7 +96,7 @@ public class GameActivity extends AppCompatActivity{
                 samuraiAttackAnimation();
                 handler.postDelayed(samuraiStandsWithDelay, 1000);
                 handler.postDelayed(knightGetHitWithDelay, 400);
-                handler.postDelayed(refreshWithDelay, 1400);
+                handler.postDelayed(refreshWithDelay, 1300);
                 handler.postDelayed(checkingDeadPlayers, 1700);
                 if (ninja.isAlive() && knight.isAlive()){
                     handler.postDelayed(actionBackDelayed, 2400);
@@ -123,7 +119,7 @@ public class GameActivity extends AppCompatActivity{
                     samuraiAttackAnimation();
                     handler.postDelayed(samuraiStandsWithDelay, 1000);
                     handler.postDelayed(knightGetHitWithDelay, 400);
-                    handler.postDelayed(refreshWithDelay, 1400);
+                    handler.postDelayed(refreshWithDelay, 1300);
                     handler.postDelayed(checkingDeadPlayers, 1700);
                     if (knight.isAlive() && ninja.isAlive()) {
                         handler.postDelayed(actionBackDelayed, 2400);
@@ -268,7 +264,7 @@ public class GameActivity extends AppCompatActivity{
             handler.postDelayed(samuraiGetHitWithDelay, 650);
             knightAttackAnimation();
             handler.postDelayed(knightStandsWithDelay, 900);
-            handler.postDelayed(refreshWithDelay, 1650);
+            handler.postDelayed(refreshWithDelay, 1500);
         }
     };
 
