@@ -95,7 +95,7 @@ public class GameActivity extends AppCompatActivity{
                 basic_att_bttn.setEnabled(false);
                 handler.postDelayed(enableButtonBasic, 4550);
                 androidShowDamageReceived(initialHP);
-                samuraiAttackAnimation();
+                setSamuraiAnimation(R.drawable.samurai_attack);
                 handler.postDelayed(samuraiStandsWithDelay, 1000);
                 handler.postDelayed(knightGetHitWithDelay, 400);
                 handler.postDelayed(refreshWithDelay, 1300);
@@ -118,7 +118,7 @@ public class GameActivity extends AppCompatActivity{
                     double initialHP = knight.getHp();
                     ninja.specialAttack(knight);
                     androidShowDamageReceived(initialHP);
-                    samuraiAttackAnimation();
+                    setSamuraiAnimation(R.drawable.samurai_attack);
                     handler.postDelayed(samuraiStandsWithDelay, 1000);
                     handler.postDelayed(knightGetHitWithDelay, 400);
                     handler.postDelayed(refreshWithDelay, 1300);
@@ -134,48 +134,18 @@ public class GameActivity extends AppCompatActivity{
         }
     }
 
-
-    public void samuraiDiesAnimation(){
-        samurai.setImageResource(R.drawable.samurai_dies);
+    public void setSamuraiAnimation(int drawable){
+        samurai.setImageResource(drawable);
         samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
         samuraiAnimations.start();
     }
 
-    public void samuraiGetsHitAnimation(){
-        samurai.setImageResource(R.drawable.samurai_gethit);
-        samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
-        samuraiAnimations.start();
-    }
-
-    public void samuraiAttackAnimation(){
-        samurai.setImageResource(R.drawable.samurai_attack);
-        samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
-        samuraiAnimations.start();
-    }
-
-    public void samuraiStandsAnimation(){
-        samurai.setImageResource(R.drawable.samurai_stands);
-        samuraiAnimations = (AnimationDrawable) samurai.getDrawable();
-        samuraiAnimations.start();
-    }
-
-    public void knightAttackAnimation(){
-        knightImage.setImageResource(R.drawable.knight_attack);
+    public void setKnightAnimation(int drawable){
+        knightImage.setImageResource(drawable);
         knightAnimations = (AnimationDrawable) knightImage.getDrawable();
         knightAnimations.start();
     }
 
-    public void knightGetHitAnimation(){
-        knightImage.setImageResource(R.drawable.knight_get_hit);
-        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
-        knightAnimations.start();
-    }
-
-    public void knightStandsAnimation(){
-        knightImage.setImageResource(R.drawable.knight_stands);
-        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
-        knightAnimations.start();
-    }
 
     public void ninjaCruzShinesAnimation(){
         ninjaCruz.setImageResource(R.drawable.cruz);
@@ -187,12 +157,6 @@ public class GameActivity extends AppCompatActivity{
         knightCruz.setImageResource(R.drawable.cruz);
         knightCruzAnimation = (AnimationDrawable) knightCruz.getDrawable();
         knightCruzAnimation.start();
-    }
-
-    public void knightDiesAnimation(){
-        knightImage.setImageResource(R.drawable.knight_dies);
-        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
-        knightAnimations.start();
     }
 
     public void player1ShowDamageReceived(double initialHp){
@@ -226,8 +190,8 @@ public class GameActivity extends AppCompatActivity{
         player_adrenaline_bar.setProgress(((int) ninja.getAdrenaline()));
         android_adrenaline_bar.setProgress(((int) knight.getAdrenaline()));
         lastAttackTime = System.currentTimeMillis();
-        samuraiStandsAnimation();
-        knightStandsAnimation();
+        setSamuraiAnimation(R.drawable.samurai_stands);
+        setKnightAnimation(R.drawable.knight_stands);
         ninjaCruz.setVisibility(View.INVISIBLE);
         knightCruz.setVisibility(View.INVISIBLE);
         if (ninja.getAdrenaline() >= 50){
@@ -264,7 +228,7 @@ public class GameActivity extends AppCompatActivity{
             knight.actionBack(ninja);
             player1ShowDamageReceived(initialHP);
             handler.postDelayed(samuraiGetHitWithDelay, 650);
-            knightAttackAnimation();
+            setKnightAnimation(R.drawable.knight_attack);
             handler.postDelayed(knightStandsWithDelay, 900);
             handler.postDelayed(refreshWithDelay, 1500);
         }
@@ -295,11 +259,11 @@ public class GameActivity extends AppCompatActivity{
         public void run() {
             Log.d("Handlers", "Checking for dead players");
             if (!ninja.isAlive()){
-                samuraiDiesAnimation();
+                setSamuraiAnimation(R.drawable.samurai_dies);
                 handler.postDelayed(ninjaCruzWithDelay, 600);
                 showToast();
             } if(!knight.isAlive()){
-                knightDiesAnimation();
+                setKnightAnimation(R.drawable.knight_dies);
                 handler.postDelayed(knightCruzWithDelay, 600);
                 showToast();
             }
@@ -320,7 +284,7 @@ public class GameActivity extends AppCompatActivity{
         @Override
         public void run() {
             Log.d("Handlers", "samurai get hit animation with delay");
-            samuraiGetsHitAnimation();
+            setSamuraiAnimation(R.drawable.samurai_gethit);
         }
     };
 
@@ -328,7 +292,7 @@ public class GameActivity extends AppCompatActivity{
         @Override
         public void run() {
             Log.d("Handlers", "samurai stands animation with delay");
-            samuraiStandsAnimation();
+            setSamuraiAnimation(R.drawable.samurai_stands);
         }
     };
 
@@ -336,7 +300,7 @@ public class GameActivity extends AppCompatActivity{
         @Override
         public void run() {
             Log.d("Handlers", "Knight stands animation with delay");
-            knightStandsAnimation();
+            setKnightAnimation(R.drawable.knight_stands);
         }
     };
 
@@ -344,7 +308,7 @@ public class GameActivity extends AppCompatActivity{
         @Override
         public void run() {
             Log.d("Handlers", "knight get hit animation with delay");
-            knightGetHitAnimation();
+            setKnightAnimation(R.drawable.knight_get_hit);
         }
     };
 

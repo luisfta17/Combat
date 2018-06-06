@@ -94,7 +94,7 @@ public class GameTwoActivity extends AppCompatActivity {
                 basic_att_bttn.setEnabled(false);
                 handler.postDelayed(enableButtonBasic, 4550);
                 androidShowDamageReceived(initialHP);
-                ninjaAttackAnimation();
+                setNinjaAnimation(R.drawable.ninja_attack);
                 handler.postDelayed(ninjaStandsWithDelay, 1000);
                 handler.postDelayed(knightGetHitWithDelay, 400);
                 handler.postDelayed(refreshWithDelay, 1300);
@@ -117,7 +117,7 @@ public class GameTwoActivity extends AppCompatActivity {
                     double initialHP = knight.getHp();
                     ninja.specialAttack(knight);
                     androidShowDamageReceived(initialHP);
-                    ninjaAttackAnimation();
+                    setNinjaAnimation(R.drawable.ninja_attack);
                     handler.postDelayed(ninjaStandsWithDelay, 1000);
                     handler.postDelayed(knightGetHitWithDelay, 400);
                     handler.postDelayed(refreshWithDelay, 1300);
@@ -143,8 +143,8 @@ public class GameTwoActivity extends AppCompatActivity {
         player_adrenaline_bar.setProgress(((int) ninja.getAdrenaline()));
         android_adrenaline_bar.setProgress(((int) knight.getAdrenaline()));
         lastAttackTime = System.currentTimeMillis();
-        ninjaStandsAnimation();
-        knightStandsAnimation();
+        setNinjaAnimation(R.drawable.ninja_alert);
+        setKnightAnimation(R.drawable.knight_stands);
         ninjaCruz.setVisibility(View.INVISIBLE);
         knightCruz.setVisibility(View.INVISIBLE);
         if (ninja.getAdrenaline() >= 50) {
@@ -155,47 +155,16 @@ public class GameTwoActivity extends AppCompatActivity {
     }
 
 
-
-    public void ninjaDiesAnimation(){
-        ninjaImage.setImageResource(R.drawable.ninja_dies);
-        ninjaAnimations = (AnimationDrawable) ninjaImage.getDrawable();
-        ninjaAnimations.start();
-    }
-
-    public void ninjaGetsHitAnimation(){
-        ninjaImage.setImageResource(R.drawable.ninja_get_hit);
-        ninjaAnimations = (AnimationDrawable) ninjaImage.getDrawable();
-        ninjaAnimations.start();
-    }
-
-    public void ninjaAttackAnimation(){
-        ninjaImage.setImageResource(R.drawable.ninja_attack);
-        ninjaAnimations = (AnimationDrawable) ninjaImage.getDrawable();
-        ninjaAnimations.start();
-    }
-
-    public void ninjaStandsAnimation(){
-        ninjaImage.setImageResource(R.drawable.ninja_alert);
-        ninjaAnimations = (AnimationDrawable) ninjaImage.getDrawable();
-        ninjaAnimations.start();
-    }
-
-    public void knightAttackAnimation(){
-        knightImage.setImageResource(R.drawable.knight_attack);
+    public void setKnightAnimation(int drawable){
+        knightImage.setImageResource(drawable);
         knightAnimations = (AnimationDrawable) knightImage.getDrawable();
         knightAnimations.start();
     }
 
-    public void knightGetHitAnimation(){
-        knightImage.setImageResource(R.drawable.knight_get_hit);
-        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
-        knightAnimations.start();
-    }
-
-    public void knightStandsAnimation(){
-        knightImage.setImageResource(R.drawable.knight_stands);
-        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
-        knightAnimations.start();
+    public void setNinjaAnimation(int drawable){
+        ninjaImage.setImageResource(drawable);
+        ninjaAnimations = (AnimationDrawable) ninjaImage.getDrawable();
+        ninjaAnimations.start();
     }
 
     public void ninjaCruzShinesAnimation(){
@@ -208,12 +177,6 @@ public class GameTwoActivity extends AppCompatActivity {
         knightCruz.setImageResource(R.drawable.cruz);
         knightCruzAnimation = (AnimationDrawable) knightCruz.getDrawable();
         knightCruzAnimation.start();
-    }
-
-    public void knightDiesAnimation(){
-        knightImage.setImageResource(R.drawable.knight_dies);
-        knightAnimations = (AnimationDrawable) knightImage.getDrawable();
-        knightAnimations.start();
     }
 
     public void player1ShowDamageReceived(double initialHp){
@@ -265,7 +228,7 @@ public class GameTwoActivity extends AppCompatActivity {
             knight.actionBack(ninja);
             player1ShowDamageReceived(initialHP);
             handler.postDelayed(ninjaGetHitWithDelay, 650);
-            knightAttackAnimation();
+            setKnightAnimation(R.drawable.knight_attack);
             handler.postDelayed(knightStandsWithDelay, 900);
             handler.postDelayed(refreshWithDelay, 1500);
         }
@@ -288,11 +251,11 @@ public class GameTwoActivity extends AppCompatActivity {
         public void run() {
             Log.d("Handlers", "Checking for dead players");
             if (!ninja.isAlive()){
-                ninjaDiesAnimation();
+                setNinjaAnimation(R.drawable.ninja_dies);
                 handler.postDelayed(ninjaCruzWithDelay, 600);
                 showToast();
             } if(!knight.isAlive()){
-                knightDiesAnimation();
+                setKnightAnimation(R.drawable.knight_dies);
                 handler.postDelayed(knightCruzWithDelay, 600);
                 showToast();
             }
@@ -313,7 +276,7 @@ public class GameTwoActivity extends AppCompatActivity {
         @Override
         public void run() {
             Log.d("Handlers", "ninja get hit animation with delay");
-            ninjaGetsHitAnimation();
+            setNinjaAnimation(R.drawable.ninja_get_hit);
         }
     };
 
@@ -321,7 +284,7 @@ public class GameTwoActivity extends AppCompatActivity {
         @Override
         public void run() {
             Log.d("Handlers", "ninja stands animation with delay");
-            ninjaStandsAnimation();
+            setNinjaAnimation(R.drawable.ninja_alert);
         }
     };
 
@@ -329,7 +292,7 @@ public class GameTwoActivity extends AppCompatActivity {
         @Override
         public void run() {
             Log.d("Handlers", "Knight stands animation with delay");
-            knightStandsAnimation();
+            setKnightAnimation(R.drawable.knight_stands);
         }
     };
 
@@ -337,7 +300,7 @@ public class GameTwoActivity extends AppCompatActivity {
         @Override
         public void run() {
             Log.d("Handlers", "knight get hit animation with delay");
-            knightGetHitAnimation();
+            setKnightAnimation(R.drawable.knight_get_hit);
         }
     };
 
