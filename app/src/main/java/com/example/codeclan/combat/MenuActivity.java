@@ -42,7 +42,9 @@ public class MenuActivity extends AppCompatActivity {
     public void onPlayBttnClicked(View view){
         Intent i=new Intent(MenuActivity.this, GameActivity.class);
         startActivity(i);
-        mainTheme.stop();
+        if (mainTheme.isPlaying()){
+            mainTheme.stop();
+        }
         samuraiAnimation.stop();
         ninjaAnimation.stop();
     }
@@ -50,7 +52,9 @@ public class MenuActivity extends AppCompatActivity {
     public void onPlayBttn2Clicked(View view){
         Intent i=new Intent(MenuActivity.this, GameTwoActivity.class);
         startActivity(i);
-        mainTheme.stop();
+        if (mainTheme.isPlaying()){
+            mainTheme.stop();
+        }
         samuraiAnimation.stop();
         ninjaAnimation.stop();
     }

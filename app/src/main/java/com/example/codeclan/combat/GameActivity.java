@@ -87,11 +87,13 @@ public class GameActivity extends AppCompatActivity{
 
     public void onBasicAttBttnClicked(View view){
         currentTime = System.currentTimeMillis();
-        if(currentTime  >= lastAttackTime  + 2300 ){
+        if(currentTime  >= lastAttackTime  + 2000 ){
             refresh();
             if (ninja.isAlive() && knight.isAlive()){
                 double initialHP = knight.getHp();
                 ninja.basicAttack(knight);
+                basic_att_bttn.setEnabled(false);
+                handler.postDelayed(enableButtonBasic, 4550);
                 androidShowDamageReceived(initialHP);
                 samuraiAttackAnimation();
                 handler.postDelayed(samuraiStandsWithDelay, 1000);
@@ -109,7 +111,7 @@ public class GameActivity extends AppCompatActivity{
 
     public void onSpecialAttBttnClicked(View view){
         currentTime = System.currentTimeMillis();
-        if(currentTime  >= lastAttackTime  + 3000 ) {
+        if(currentTime  >= lastAttackTime  + 2000 ) {
             refresh();
             if (ninja.getAdrenaline() > 50) {
                 if (ninja.isAlive() && knight.isAlive()) {
@@ -277,6 +279,14 @@ public class GameActivity extends AppCompatActivity{
             ninja.setAdrenaline(0);
             knight.setAdrenaline(0);
             refresh();
+        }
+    };
+
+    private Runnable enableButtonBasic = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("Handlers", "Basic att button enable with delay");
+            basic_att_bttn.setEnabled(true);
         }
     };
 
