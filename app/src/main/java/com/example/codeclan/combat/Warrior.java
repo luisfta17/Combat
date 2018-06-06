@@ -40,7 +40,6 @@ public abstract class Warrior extends Character {
     public void specialAttack(Character character){
         if (this.adrenaline >= 50){
             character.reciveDamage(this.getAttPower() * 2);
-            System.out.println(String.format("%s used a Special attack!",this.getName()));
             this.adrenaline -= 50;
         }
     }

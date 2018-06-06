@@ -47,6 +47,8 @@ public class GameTwoActivity extends AppCompatActivity {
     int shortMessage = Toast.LENGTH_SHORT;
     long lastAttackTime;
     long currentTime;
+    private static final boolean D = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -223,7 +225,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable actionBackDelayed = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "Action back with delay");
+            if(D) Log.d("Handlers", "Action back with delay");
             double initialHP = ninja.getHp();
             knight.actionBack(ninja);
             player1ShowDamageReceived(initialHP);
@@ -237,7 +239,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable restartGame = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "Restart game with delay");
+            if(D) Log.d("Handlers", "Restart game with delay");
             ninja.setHp(ninja.getMaxHp());
             knight.setHp(knight.getMaxHp());
             ninja.setAdrenaline(0);
@@ -249,7 +251,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable checkingDeadPlayers = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "Checking for dead players");
+            if(D) Log.d("Handlers", "Checking for dead players");
             if (!ninja.isAlive()){
                 setNinjaAnimation(R.drawable.ninja_dies);
                 handler.postDelayed(ninjaCruzWithDelay, 600);
@@ -266,7 +268,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable refreshWithDelay = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "Refresh with delay");
+            if(D) Log.d("Handlers", "Refresh with delay");
             refresh();
 
         }
@@ -275,7 +277,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable ninjaGetHitWithDelay = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "ninja get hit animation with delay");
+            if(D) Log.d("Handlers", "ninja get hit animation with delay");
             setNinjaAnimation(R.drawable.ninja_get_hit);
         }
     };
@@ -283,7 +285,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable ninjaStandsWithDelay = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "ninja stands animation with delay");
+            if(D) Log.d("Handlers", "ninja stands animation with delay");
             setNinjaAnimation(R.drawable.ninja_alert);
         }
     };
@@ -291,7 +293,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable knightStandsWithDelay = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "Knight stands animation with delay");
+            if(D) Log.d("Handlers", "Knight stands animation with delay");
             setKnightAnimation(R.drawable.knight_stands);
         }
     };
@@ -299,7 +301,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable knightGetHitWithDelay = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "knight get hit animation with delay");
+            if(D) Log.d("Handlers", "knight get hit animation with delay");
             setKnightAnimation(R.drawable.knight_get_hit);
         }
     };
@@ -307,7 +309,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable ninjaCruzWithDelay = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "shows ninja cruz");
+            if(D) Log.d("Handlers", "shows ninja cruz");
             ninjaCruzShinesAnimation();
             ninjaCruz.setVisibility(View.VISIBLE);
         }
@@ -316,7 +318,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable knightCruzWithDelay = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "shows samurai cruz");
+            if(D) Log.d("Handlers", "shows samurai cruz");
             knightCruzShinesAnimation();
             knightCruz.setVisibility(View.VISIBLE);
         }
@@ -325,7 +327,7 @@ public class GameTwoActivity extends AppCompatActivity {
     private Runnable enableButtonBasic = new Runnable() {
         @Override
         public void run() {
-            Log.d("Handlers", "Basic att button enable with delay");
+            if(D) Log.d("Handlers", "Basic att button enable with delay");
             basic_att_bttn.setEnabled(true);
         }
     };

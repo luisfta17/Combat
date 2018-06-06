@@ -70,14 +70,12 @@ public abstract class Character {
             if (!this.isAlive()) {
                 this.hp = 0;
             }
-            System.out.println(String.format("%s has received a critical hit of %.2f damage! -  %s has %.2f hp left!! ", this.getName(), total, this.getName(), this.getHp()));
         } else {
             double total = damage;
             this.hp -= total;
             if (!this.isAlive()) {
                 this.hp = 0;
             }
-            System.out.println(String.format("%s has received %.2f damage! -  %s has %.2f hp left!! ", this.getName(), total, this.getName(), this.getHp()));
         }
 
     }
