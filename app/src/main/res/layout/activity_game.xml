@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    tools:context=".GameActivity">
 
     <ImageView
         android:id="@+id/knight_cruz"
@@ -80,9 +80,9 @@
             android:id="@+id/hp_counter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:text="@string/player_hp"
             android:textColor="@android:color/background_dark"
-            android:background="@android:color/transparent"
             android:textSize="20sp"
             android:textStyle="bold" />
 

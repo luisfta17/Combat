@@ -45,8 +45,6 @@ public class MenuActivity extends AppCompatActivity {
         if (mainTheme.isPlaying()){
             mainTheme.stop();
         }
-        samuraiAnimation.stop();
-        ninjaAnimation.stop();
     }
 
     public void onPlayBttn2Clicked(View view){
@@ -55,7 +53,5 @@ public class MenuActivity extends AppCompatActivity {
         if (mainTheme.isPlaying()){
             mainTheme.stop();
         }
-        samuraiAnimation.stop();
-        ninjaAnimation.stop();
     }
 }
