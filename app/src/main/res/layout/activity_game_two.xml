@@ -48,6 +48,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:elegantTextHeight="false"
         android:text="@string/player1_damage_received"
         android:textColor="@android:color/black"
         android:textSize="24sp"
@@ -160,10 +161,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="109dp"
-        android:layout_height="132dp"
+        android:layout_width="128dp"
+        android:layout_height="147dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:orientation="vertical"
